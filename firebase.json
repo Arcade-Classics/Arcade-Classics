@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "public": "website/build",
+    "redirects": [
+      {
+        "destination": "https://chrome.google.com/webstore/detail/arcade-classics/gokcmhknbfbkchaljcbjloaebnoblcnd",
+        "source": "/install@(|.html)",
+        "type": 302
+      }
+    ],
+    "rewrites": [
+      {
+        "destination": "/index.html",
+        "source": "**"
+      }
+    ]
+  }
+}

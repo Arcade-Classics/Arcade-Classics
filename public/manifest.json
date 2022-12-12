@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Arcade Classics",
+  "version": "2.1.0",
+  "author": "Hugo Maxted (https://github.com/Hugo-Maxted), StilltheSmartie and Not Mario",
+  "description": "Welcome to Arcade Classics - a free browser extension with 9 games to play!",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline';"
+  },
+  "permissions": ["storage"],
+  "icons": {
+    "128": "icon.png"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  }
+}

@@ -1,0 +1,7 @@
+/website/node_modules
+/node_modules
+/website/build
+/build
+/.firebase
+/src/assets/main.css
+/src/react-app-env.d.ts
