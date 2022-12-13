@@ -21,7 +21,10 @@
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "build": "npx prettier --write . && sass --charset --no-source-map --style=compressed ./src/assets/main.scss ./src/assets/main.css && react-scripts build && rm -rf ./build/static/js/*.LICENSE.txt && rm -rf ./build/asset-manifest.json"
+    "prettier": "npx prettier --write .",
+    "build-css": "sass --charset --no-source-map --style=compressed ./src/assets/main.scss ./src/assets/main.css",
+    "build-chromium": "npm run prettier && npm run build-css && react-scripts build && mv ./build/manifest-firefox.json ./build/manifest.json",
+    "build-firefox": "npm run prettier && npm run build-css && react-scripts build && mv ./build/manifest-firefox.json ./build/manifest.json"
   },
   "watch": {
     "build": {
