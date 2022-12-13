@@ -26,9 +26,7 @@ const Setting: (props: types.setting) => JSX.Element = (props: types.setting): J
             defaultChecked={Boolean(e.storage.get(props.id))}
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               if (props.id === "sync-storage" && navigator.userAgent.toLowerCase().indexOf("firefox") > -1) return;
-
               e.storage.set(props.id, event.currentTarget.checked);
-
               if (props.function) props.function(event.currentTarget.checked);
             }}></input>
         </div>
@@ -46,7 +44,6 @@ const Setting: (props: types.setting) => JSX.Element = (props: types.setting): J
             defaultValue={String(e.storage.get(props.id))}
             onChange={(event: React.ChangeEvent<HTMLSelectElement>): void => {
               e.storage.set(props.id, event.currentTarget.value);
-
               if (props.function) props.function(event.currentTarget.value);
             }}>
             {props.options?.map(
@@ -76,7 +73,6 @@ const Setting: (props: types.setting) => JSX.Element = (props: types.setting): J
             onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
               e.storage.set(props.id, event.currentTarget.value);
               setValue(Number(event.currentTarget.value));
-
               if (props.function) props.function(event.currentTarget.value);
             }}></input>
         </div>
@@ -101,7 +97,6 @@ const Setting: (props: types.setting) => JSX.Element = (props: types.setting): J
                 "keydown",
                 (event: KeyboardEvent): void => {
                   if (e.pages.get() !== "settings") return;
-
                   e.storage.set(props.id, event.code);
                   setValue(event.code);
                   element.innerText = "Record";

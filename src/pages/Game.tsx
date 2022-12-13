@@ -80,8 +80,17 @@ const Game: () => JSX.Element = (): JSX.Element => {
       if (e.storage.get("save-game")) localStorage.setItem("save-" + game.id, JSON.stringify({data: e.games.current.data, time: time}));
 
       e.games.ctx?.clearRect(0, 0, game.page.width || 0, game.page.height || 0);
-      game.functions.render(Math.round(time.time), time.delta);
-      game.functions.update(Math.round(time.time), time.delta);
+
+      try {
+        game.functions.render(Math.round(time.time), time.delta);
+      } catch (err) {
+        console.warn("Error in game render function: " + err);
+      }
+      try {
+        game.functions.update(Math.round(time.time), time.delta);
+      } catch (err) {
+        console.warn("Error in game update function: " + err);
+      }
 
       let start: number = performance.now();
 

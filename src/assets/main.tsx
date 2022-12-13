@@ -207,6 +207,13 @@ const e: types.e = {
         default: true,
       },
       {
+        name: "Upload Stats",
+        info: "Automatically upload your game statistics to the leaderboards (disabling this setting does not delete previous data).",
+        id: "upload-stats",
+        type: "checkbox",
+        default: true,
+      },
+      {
         name: "Music Volume",
         info: "Set the music volume.",
         id: "music-volume",
@@ -275,6 +282,7 @@ const e: types.e = {
       e.stats.data.forEach((stat: types.stat, index: number): void => {
         e.stats.data[index].val = e.stats.get(stat.id);
       });
+      if (!e.storage.get("upload-stats")) return;
       update(ref(getDatabase(), "Users/" + e.storage.get("user-id")), {
         stats: e.stats.data,
       });
