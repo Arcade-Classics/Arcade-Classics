@@ -151,10 +151,12 @@ const Page: () => JSX.Element = (): JSX.Element => {
     e.eventListeners.add("pageChange", (page: string): void => setPage(page));
 
     if (!localStorage.getItem("storage")) {
-      chrome.storage.sync.get(null, (val: {[key: string]: string | number | boolean}): void => {
-        if (val) init(val);
-        else init({});
-      });
+      if (e.storage.get("sync-storage")) {
+        chrome.storage.sync.get(null, (val: {[key: string]: string | number | boolean}): void => {
+          if (val) init(val);
+          else init({});
+        });
+      } else init({});
     } else init(JSON.parse(localStorage.getItem("storage") || "{}"));
 
     window.onerror = (msg: string | Event, url?: string, line?: number, column?: number, error?: Error): void => {

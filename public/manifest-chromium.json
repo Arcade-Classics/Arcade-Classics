@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Arcade Classics",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Hugo Maxted, Mace Chettiyadan and Not Mario",
   "description": "Welcome to Arcade Classics - a free browser extension with 9 games to play!",
   "content_security_policy": {
