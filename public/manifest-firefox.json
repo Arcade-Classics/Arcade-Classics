@@ -4,8 +4,7 @@
   "version": "2.1.0",
   "author": "Hugo Maxted, Mace Chettiyadan and Not Mario",
   "description": "Welcome to Arcade Classics - a free browser extension with 9 games to play!",
-  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://apis.google.com https://*.firebasedatabase.app; object-src 'self'",
-  "permissions": ["storage"],
+  "content_security_policy": "script-src 'self'; object-src 'self'; script-src-elem 'self';",
   "icons": {
     "128": "icon.png"
   },

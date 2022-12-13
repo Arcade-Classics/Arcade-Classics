@@ -52,8 +52,8 @@ const Game: () => JSX.Element = (): JSX.Element => {
 
     setGame(game);
 
-    e.setCSSVar("width", game.page.width + 50 + "px");
-    e.setCSSVar("height", game.page.height + "px");
+    document.body.style.width = game.page.width + 50 + "px";
+    document.body.style.height = game.page.height + "px";
     e.setShadow(true);
 
     if (localStorage.getItem("save-" + game.id)) {
@@ -172,8 +172,8 @@ const Game: () => JSX.Element = (): JSX.Element => {
           {e.storage.get("fps-counter") ? <div className="fps">{Math.round(fps)} fps</div> : null}
           <canvas
             className="canvas"
-            width={Number(getComputedStyle(document.documentElement).getPropertyValue("--width").split("px")[0]) - 50}
-            height={getComputedStyle(document.documentElement).getPropertyValue("--height")}
+            width={game.page.width + 50}
+            height={game.page.height}
             ref={(element: HTMLCanvasElement | null): void => {
               if (!element) return;
 

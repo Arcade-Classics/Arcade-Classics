@@ -5,7 +5,7 @@
   "author": "Hugo Maxted, Mace Chettiyadan and Not Mario",
   "description": "Welcome to Arcade Classics - a free browser extension with 9 games to play!",
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline';"
+    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self';"
   },
   "permissions": ["storage"],
   "icons": {

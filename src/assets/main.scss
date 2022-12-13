@@ -6,8 +6,6 @@
   --primary: #bb86fc;
   --accent: #222222;
   --background: #121212;
-  --width: 250px;
-  --height: 450px;
 }
 * {
   scrollbar-width: none;
@@ -19,8 +17,8 @@ body {
   font-family: "Roboto", sans-serif;
   transition: width 0.5s, height 0.5s;
   color: var(--text);
-  width: var(--width);
-  height: var(--height);
+  width: 250px;
+  height: 450px;
   background-color: var(--background);
 }
 p,
@@ -33,7 +31,7 @@ body {
 .ui {
   display: grid;
   grid-template-columns: 50px 1fr;
-  grid-template-rows: var(--height);
+  grid-template-rows: 100vh;
   > .sidebar {
     display: grid;
     padding: 5px;
@@ -53,8 +51,10 @@ body {
     }
   }
   > .page {
-    overflow-y: scroll;
     overflow-x: hidden;
+    > div.game {
+      overflow-y: hidden;
+    }
     > div:not(.game) {
       padding: 5px;
     }
@@ -123,7 +123,7 @@ body {
         "minesweeper t048"
         "flappy .";
       grid-gap: 5px;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 92.5px 92.5px;
       grid-template-rows: 190px 92.5px 92.5px 92.5px 92.5px;
       > div > img {
         height: 100%;
@@ -151,8 +151,8 @@ body {
       }
     }
     > .game {
-      height: var(--height);
-      width: calc(var(--width) - 50px);
+      height: 100%;
+      width: calc(100% - 50px);
       > .fps {
         position: absolute;
         color: #00ff00;
@@ -163,7 +163,7 @@ body {
         position: absolute;
         top: 50px;
         width: 300px;
-        left: calc(calc(calc(var(--width) - 350px) / 2) + 50px);
+        left: calc(calc(calc(100% - 350px) / 2) + 50px);
         &.card > .body {
           background-color: var(--background);
           > .play,
@@ -387,8 +387,8 @@ kbd {
   background-color: #000000;
   top: 0px;
   left: 50px;
-  width: calc(var(--width) - 50px);
-  height: var(--height);
+  width: calc(100% - 50px);
+  height: 100%;
 }
 .profilePicture {
   width: 25px;

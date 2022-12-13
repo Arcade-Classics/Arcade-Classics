@@ -23,7 +23,7 @@
   "scripts": {
     "prettier": "npx prettier --write .",
     "build-css": "sass --charset --no-source-map --style=compressed ./src/assets/main.scss ./src/assets/main.css",
-    "build-chromium": "npm run prettier && npm run build-css && react-scripts build && mv ./build/manifest-firefox.json ./build/manifest.json",
+    "build-chromium": "npm run prettier && npm run build-css && react-scripts build && mv ./build/manifest-chromium.json ./build/manifest.json",
     "build-firefox": "npm run prettier && npm run build-css && react-scripts build && mv ./build/manifest-firefox.json ./build/manifest.json"
   },
   "watch": {

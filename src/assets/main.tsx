@@ -126,8 +126,8 @@ const e: types.e = {
       window.location.hash = "#" + page;
       localStorage.setItem("last-page", page);
       if (updatePage) {
-        e.setCSSVar("width", "250px");
-        e.setCSSVar("height", "450px");
+        document.body.style.width = "250px";
+        document.body.style.height = "450px";
       }
       e.setShadow(false);
       e.games.current.music?.pause();
