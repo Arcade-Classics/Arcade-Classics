@@ -3,6 +3,7 @@ import * as types from "../assets/types";
 import Card from "../components/Card";
 import Info from "../components/Info";
 import {DataSnapshot, getDatabase, limitToFirst, limitToLast, onValue, query, ref, orderByChild, startAfter} from "@firebase/database";
+import {update} from "firebase/database";
 import {useEffect, useState} from "react";
 
 let cache: {[id: string]: types.leaderboard[]} = {};
@@ -41,6 +42,10 @@ const Profile: () => JSX.Element = (): JSX.Element => {
           defaultValue={String(e.storage.get("user-name"))}
           onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
             e.storage.set("user-name", event.target.value);
+            update(ref(getDatabase(), "Users/" + e.storage.get("user-id")), {
+              name: e.storage.get("user-name"),
+              stats: e.stats.data,
+            });
           }}></input>
       </Card>
       <Card title="Stats" type="title-collapsible" default={false}>
