@@ -15,3 +15,5 @@ This extension is written in React Tpescript and uses a Firebase Realtime Databa
 6. When building for a chromium based browser (eg: chrome, edge) run `npm run build-chromium`.
 7. The built code can be found in `/build`.
 8. Load the build into your browser of choice.
+
+[![](https://visitcount.itsvg.in/api?id=arcade-classics&label=Views&pretty=true)](https://visitcount.itsvg.in)
