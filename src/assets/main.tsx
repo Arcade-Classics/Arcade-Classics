@@ -284,6 +284,7 @@ const e: types.e = {
       });
       if (!e.storage.get("upload-stats")) return;
       update(ref(getDatabase(), "Users/" + e.storage.get("user-id")), {
+        name: e.storage.get("user-name"),
         stats: e.stats.data,
       });
     },
