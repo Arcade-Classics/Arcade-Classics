@@ -172,7 +172,7 @@ const Game: () => JSX.Element = (): JSX.Element => {
           {e.storage.get("fps-counter") ? <div className="fps">{Math.round(fps)} fps</div> : null}
           <canvas
             className="canvas"
-            width={game.page.width + 50}
+            width={game.page.width}
             height={game.page.height}
             ref={(element: HTMLCanvasElement | null): void => {
               if (!element) return;
