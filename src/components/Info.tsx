@@ -12,6 +12,9 @@ const Info: () => JSX.Element = (): JSX.Element => {
       <a href="https://arcade-classics.github.io/credits" target="_blank" rel="noreferrer">
         Credits
       </a>
+      <a href="https://github.com/Arcade-Classics/Arcade-Classics" target="_blank" rel="noreferrer">
+        Github
+      </a>
     </div>
   );
 };
