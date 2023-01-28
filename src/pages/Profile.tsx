@@ -4,13 +4,15 @@ import Card from "../components/Card";
 import Info from "../components/Info";
 import {DataSnapshot, getDatabase, limitToFirst, limitToLast, onValue, query, ref, orderByChild, startAfter} from "@firebase/database";
 import {update} from "firebase/database";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 let cache: {[id: string]: types.leaderboard[]} = {};
 
 const Profile: () => JSX.Element = (): JSX.Element => {
   const [currentStat, setCurrentStat] = useState<types.stat>(e.stats.data[0]);
   const [leaderboard, setLeaderboard] = useState<types.leaderboard[]>([]);
+  const [editingName, setEditingName] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>(String(e.storage.get("user-name")));
 
   useEffect((): void => {
     let statIndex: number = 0;
@@ -34,19 +36,44 @@ const Profile: () => JSX.Element = (): JSX.Element => {
   return (
     <div className="profile">
       <Card title="Username" type="title">
+        {editingName ? (
+          <div className="username">
+            <div
+              className="button material-icons"
+              onClick={(): void => {
+                if (username.length > 30) setUsername(username.slice(0, 30));
+                e.storage.set("user-name", username);
+                update(ref(getDatabase(), "Users/" + e.storage.get("user-id")), {
+                  name: e.storage.get("user-name"),
+                  stats: e.stats.data,
+                });
+                setEditingName(false);
+              }}>
+              done
+            </div>
+            <input
+              type="text"
+              className="input"
+              key={"user-name-input"}
+              defaultValue={String(e.storage.get("user-name"))}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
+                setUsername(event.target.value);
+              }}></input>
+          </div>
+        ) : (
+          <div className="username">
+            <div
+              className="button material-icons"
+              onClick={(): void => {
+                setEditingName(true);
+              }}>
+              edit
+            </div>
+            <p>{e.storage.get("user-name")}</p>
+          </div>
+        )}
+        <br />
         <p>Your Username is used to identify you on leaderboards.</p>
-        <input
-          type="text"
-          className="input"
-          key={"user-name-input"}
-          defaultValue={String(e.storage.get("user-name"))}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
-            e.storage.set("user-name", event.target.value);
-            update(ref(getDatabase(), "Users/" + e.storage.get("user-id")), {
-              name: e.storage.get("user-name"),
-              stats: e.stats.data,
-            });
-          }}></input>
       </Card>
       <Card title="Stats" type="title-collapsible" default={false}>
         {e.stats.data.map(

@@ -224,17 +224,26 @@ body {
       grid-gap: 5px;
       grid-template-columns: 190px;
       > .card > .body {
-        > input[type="text"] {
-          background-color: var(--accent);
-          color: var(--text);
-          border-radius: 4px;
-          padding-right: 4px;
-          padding-left: 4px;
-          margin-top: 4px;
-          height: 24px;
-          width: 170px;
-          outline: none;
-          border: none;
+        .username {
+          display: grid;
+          grid-template-columns: 24px 1fr;
+          > p {
+            margin-left: 4px;
+            margin-top: auto;
+            margin-bottom: auto;
+          }
+          > input[type="text"] {
+            background-color: var(--accent);
+            color: var(--text);
+            border-radius: 4px;
+            padding-right: 4px;
+            padding-left: 4px;
+            margin-left: 4px;
+            height: 24px;
+            width: 142px;
+            outline: none;
+            border: none;
+          }
         }
         > .stat {
           display: grid;
@@ -389,10 +398,6 @@ kbd {
   left: 50px;
   width: calc(100% - 50px);
   height: 100%;
-}
-.profilePicture {
-  width: 25px;
-  border-radius: 25px;
 }
 .tooltip {
   position: relative;

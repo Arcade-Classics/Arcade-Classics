@@ -1,6 +1,6 @@
 {
   "name": "arcade-classics",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.15.8",
