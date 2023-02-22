@@ -6,6 +6,8 @@ The source code of the Arcade Classics chrome extension
 
 This extension is written in React Tpescript and uses a Firebase Realtime Database to manage leaderboards. Please make sure you are familiar with these technologies before contributing.
 
+The code here is missing comments and a few other nice to haves for contributors, we are working on adding these soon.
+
 ## Building
 
 1. Download and uncompress the source code.
