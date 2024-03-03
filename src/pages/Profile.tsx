@@ -139,25 +139,25 @@ const Profile: () => JSX.Element = (): JSX.Element => {
         </div>
         {leaderboard.length > 0
           ? leaderboard.map((user: types.leaderboard): JSX.Element => {
-            const trueIndex: number = leaderboard
-              .filter((v: types.leaderboard): boolean => v.stat !== 0)
-              .map((v: types.leaderboard): number => v.stat)
-              .indexOf(user.stat);
+              const trueIndex: number = leaderboard
+                .filter((v: types.leaderboard): boolean => v.stat !== 0)
+                .map((v: types.leaderboard): number => v.stat)
+                .indexOf(user.stat);
 
-            return (
-              <>
-                {user.stat > 0 ? (
-                  <div className="stat">
-                    <p>
-                      {trueIndex === 0 ? "🏆" : trueIndex === 1 ? "🥈" : trueIndex === 2 ? "🥉" : trueIndex + 1 + "th"}:{user.name?.length > 25 ? user.name?.substring(0, 25) + "..." : user.name}
-                    </p>
-                    <div></div>
-                    <p>{user.stat}</p>
-                  </div>
-                ) : null}
-              </>
-            );
-          })
+              return (
+                <>
+                  {user.stat > 0 ? (
+                    <div className="stat">
+                      <p>
+                        {trueIndex === 0 ? "🏆" : trueIndex === 1 ? "🥈" : trueIndex === 2 ? "🥉" : trueIndex + 1 + "th"}:{user.name?.length > 25 ? user.name?.substring(0, 25) + "..." : user.name}
+                      </p>
+                      <div></div>
+                      <p>{user.stat}</p>
+                    </div>
+                  ) : null}
+                </>
+              );
+            })
           : "Loading..."}
       </Card>
       <Info />

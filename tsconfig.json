@@ -8,10 +8,9 @@
     "noEmit": true,
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
     "jsx": "react-jsx",
     "strict": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": false, // temporary fix
     "noUnusedParameters": false, // temporary fix
     "noFallthroughCasesInSwitch": true
   },

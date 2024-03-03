@@ -1,5 +1,7 @@
 import e from "./assets/main";
 import "./assets/main.css";
+import "@fontsource/roboto/latin-400.css";
+import "@material-design-icons/font/filled.css";
 import * as types from "./assets/types";
 import Card from "./components/Card";
 import Game from "./pages/Game";

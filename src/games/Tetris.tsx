@@ -427,13 +427,13 @@ const Tetris: types.game = {
       ctx.fillText("Held Piece: ", 255, 200);
       data.game.heldPiece
         ? data.game.heldPiece.forEach((row: matrix[], y: number): void => {
-          row.forEach((cell: number, x: number): void => {
-            if (cell !== 0) {
-              ctx.fillStyle = matrixDict[cell as 1 | 2 | 3 | 4 | 5 | 6 | 7];
-              ctx.fillRect(260 + x * 25, 210 + y * 25, 25, 25);
-            }
-          });
-        })
+            row.forEach((cell: number, x: number): void => {
+              if (cell !== 0) {
+                ctx.fillStyle = matrixDict[cell as 1 | 2 | 3 | 4 | 5 | 6 | 7];
+                ctx.fillRect(260 + x * 25, 210 + y * 25, 25, 25);
+              }
+            });
+          })
         : ctx.fillText("None", 255, 218);
       ctx.fillStyle = e.storage.get("dark-mode") ? "#ffffff" : "#000000";
       ctx.fillText("Score: " + data.player.score, 255, 330);
