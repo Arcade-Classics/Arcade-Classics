@@ -49,7 +49,7 @@ const rotate = (matrix: matrix[][]) => {
   e.games.current.data.piece.matrix.forEach((row: matrix[], y: number): void => {
     row.forEach((_cell: number, x: number): void => {
       if (e.games.current.data.game.droppedMatrix[y + e.games.current.data.piece.y - 1]) {
-        let rotationCheck: number = e.games.current.data.game.droppedMatrix[y + e.games.current.data.piece.y - 1][x + e.games.current.data.piece.x - 1];
+        const rotationCheck: number = e.games.current.data.game.droppedMatrix[y + e.games.current.data.piece.y - 1][x + e.games.current.data.piece.x - 1];
         if (rotationCheck !== 0) {
           e.games.current.data.piece.matrix = oldMatrix;
           if (!rotationCheck) {
@@ -93,7 +93,7 @@ const endGame: (message: string) => void = (message: string) => {
 };
 
 const setupLock: () => void = (): void => {
-  let time: number = 30 - e.games.current.data.player.level * 5 + 5;
+  const time: number = 30 - e.games.current.data.player.level * 5 + 5;
   time >= 10 ? (e.games.current.data.player.dropLockTimer = time) : (e.games.current.data.player.dropLockTimer = 10);
   e.games.current.data.player.dropLockAggregate += e.games.current.data.player.dropLockTimer;
   if (e.games.current.data.player.dropLockAggregate > 250) playerReset();
@@ -427,13 +427,13 @@ const Tetris: types.game = {
       ctx.fillText("Held Piece: ", 255, 200);
       data.game.heldPiece
         ? data.game.heldPiece.forEach((row: matrix[], y: number): void => {
-            row.forEach((cell: number, x: number): void => {
-              if (cell !== 0) {
-                ctx.fillStyle = matrixDict[cell as 1 | 2 | 3 | 4 | 5 | 6 | 7];
-                ctx.fillRect(260 + x * 25, 210 + y * 25, 25, 25);
-              }
-            });
-          })
+          row.forEach((cell: number, x: number): void => {
+            if (cell !== 0) {
+              ctx.fillStyle = matrixDict[cell as 1 | 2 | 3 | 4 | 5 | 6 | 7];
+              ctx.fillRect(260 + x * 25, 210 + y * 25, 25, 25);
+            }
+          });
+        })
         : ctx.fillText("None", 255, 218);
       ctx.fillStyle = e.storage.get("dark-mode") ? "#ffffff" : "#000000";
       ctx.fillText("Score: " + data.player.score, 255, 330);
@@ -470,7 +470,7 @@ const Tetris: types.game = {
         }
       }
 
-      let lastLevel: number = data.player.level;
+      const lastLevel: number = data.player.level;
       data.player.level = Math.floor(data.player.rowsCleared / 10) + 1;
       if (lastLevel !== data.player.level && e.storage.get("tetris-mode") === "Ghost") data.flashesLeft++;
       if (data.player.level === 10) e.achievements.set("tetris-level-10");
@@ -544,7 +544,7 @@ const Tetris: types.game = {
       if (e.games.keys.Secondary && !data.piece.heldThisPlay) {
         data.piece.heldThisPlay = true;
         if (data.game.heldPiece) {
-          let tempHeldPiece: number = data.game.heldPiece;
+          const tempHeldPiece: number = data.game.heldPiece;
           data.game.heldPiece = data.piece.matrix;
           data.piece.matrix = tempHeldPiece;
         } else {

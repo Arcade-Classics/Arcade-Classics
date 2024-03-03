@@ -121,7 +121,7 @@ const generateMines: (x: number, y: number) => void = (x: number, y: number): vo
     }
   }
   shuffleArray(allMineSpots);
-  let chosenMineSpots: number[][] = allMineSpots.slice(0, mines);
+  const chosenMineSpots: number[][] = allMineSpots.slice(0, mines);
   chosenMineSpots.forEach((cell: number[]): boolean => (data.grid[cell[1]][cell[0]].isMine = true));
   data.grid.forEach((row: cell[], rowIndex: number): void => {
     row.forEach((cell: cell, columnIndex: number): void => {
@@ -170,7 +170,7 @@ const Minesweeper: types.game = {
       const ctx: CanvasRenderingContext2D = e.games.ctx;
       const data: {[key: string]: any} = e.games.current.data;
 
-      let scaling: number = 1 / (e.storage.get("minesweeper-difficulty") as number) || 1;
+      const scaling: number = 1 / (e.storage.get("minesweeper-difficulty") as number) || 1;
       data.grid.forEach((row: cell[], rowIndex: number): void => {
         row.forEach((cell: cell, columnIndex: number): void => {
           ctx.fillStyle = e.storage.get("dark-mode") ? "#272727" : "#e2e2e2";
@@ -263,11 +263,11 @@ const Minesweeper: types.game = {
       const data: {[key: string]: any} = e.games.current.data;
 
       if (data.hasWon || data.hasLost) return;
-      let scaling: number = 1 / (e.storage.get("minesweeper-difficulty") as number) || 1;
-      let size: number = data.grid.length;
+      const scaling: number = 1 / (e.storage.get("minesweeper-difficulty") as number) || 1;
+      const size: number = data.grid.length;
       if (!(event.x < 50 + 5 * scaling || event.y < 50 + 5 * scaling || event.x >= 50 + (50 * size + 5) || event.y >= 50 + (50 * size + 5))) {
-        let gridX: number = Math.floor((event.x - (45 + 5 * scaling)) / (50 * scaling));
-        let gridY: number = Math.floor((event.y - (45 + 5 * scaling)) / (50 * scaling));
+        const gridX: number = Math.floor((event.x - (45 + 5 * scaling)) / (50 * scaling));
+        const gridY: number = Math.floor((event.y - (45 + 5 * scaling)) / (50 * scaling));
         if (event.button === "right") {
           if (!data.grid[gridY][gridX].opened) {
             data.grid[gridY][gridX].flagged = !data.grid[gridY][gridX].flagged;

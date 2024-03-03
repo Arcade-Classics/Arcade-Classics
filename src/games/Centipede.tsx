@@ -138,7 +138,7 @@ const Centipede: types.game = {
       e.games.ctx.fillRect(0, 350, 500, 150);
       e.games.current.data.mushrooms.forEach((mushroom: Mushroom): void => {
         if (!e.games.ctx) return;
-        let texture: string[][] = shrooms[mushroom.hp];
+        const texture: string[][] = shrooms[mushroom.hp];
         texture.forEach((row: string[], y: number): void => {
           row.forEach((cell: string, x: number): void => {
             if (!e.games.ctx || cell === "-") return;

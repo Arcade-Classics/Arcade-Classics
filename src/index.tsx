@@ -33,7 +33,7 @@ const Page: () => JSX.Element = (): JSX.Element => {
         const array: Uint32Array = new Uint32Array(1);
         window.crypto.getRandomValues(array);
         e.storage.set("user-id", array[0].toString(36));
-        let usernames: string[] = ["Avid Arcade Classics User", "Snake Player", "Brick Breaker", "Ping Ponger", "Tetris Enjoyer", "Asteroid Shooter", "Fruit Eater", "Mine Sweeper", "Space Invader"];
+        const usernames: string[] = ["Avid Arcade Classics User", "Snake Player", "Brick Breaker", "Ping Ponger", "Tetris Enjoyer", "Asteroid Shooter", "Fruit Eater", "Mine Sweeper", "Space Invader"];
         e.storage.set("user-name", usernames[Math.floor(Math.random() * usernames.length)] + " " + Math.floor(Math.random() * 1000));
       }
 

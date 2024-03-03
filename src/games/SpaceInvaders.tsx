@@ -27,7 +27,7 @@ interface laser {
 
 const resetAliens: () => void = (): void => {
   const dir: "right" | "left" = Math.floor(Math.random() * 2) === 0 ? "right" : "left";
-  let aliens: boolean[][] = [[], [], [], [], []];
+  const aliens: boolean[][] = [[], [], [], [], []];
 
   for (let i: number = 0; i < 5; i++) {
     for (let e: number = 0; e < 11; e++) {
@@ -64,10 +64,10 @@ const SpaceInvaders: types.game = {
   info: "Use <kbd>[LEFT]</kbd> and <kbd>[RIGHT]</kbd> to move your turret, press <kbd>[PRIMARY]</kbd> to fire. Fend off the invaders!",
   functions: {
     start: (): void => {
-      let stars: star[] = [];
+      const stars: star[] = [];
       for (let i: number = 0; i < 500 + Math.random() * 100; i++) stars.push({x: Math.random() * 500, y: Math.random() * 430, radius: Math.random() * 2});
 
-      let shields: number[][][] = [];
+      const shields: number[][][] = [];
       for (let i: number = 0; i < 4; i++) {
         shields.push([
           [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
@@ -145,7 +145,7 @@ const SpaceInvaders: types.game = {
       });
 
       data.explosions.forEach((explosion: explosion): void => {
-        let texture: number[][] = [
+        const texture: number[][] = [
           [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
           [0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0],
           [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],

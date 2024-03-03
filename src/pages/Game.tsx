@@ -42,7 +42,7 @@ const Game: () => JSX.Element = (): JSX.Element => {
       e.games.current.music?.pause();
     };
 
-    let game: types.game | undefined = e.games.data.find((val: types.game): boolean => val.id === e.storage.get("game"));
+    const game: types.game | undefined = e.games.data.find((val: types.game): boolean => val.id === e.storage.get("game"));
 
     if (!game) {
       e.storage.remove("game");
@@ -92,11 +92,11 @@ const Game: () => JSX.Element = (): JSX.Element => {
         console.warn("Error in game update function: " + err);
       }
 
-      let start: number = performance.now();
+      const start: number = performance.now();
 
       requestAnimationFrame((): void => {
-        let fps: number = 1000 / (performance.now() - start);
-        let delta: number = 60 / fps;
+        const fps: number = 1000 / (performance.now() - start);
+        const delta: number = 60 / fps;
 
         setFps(fps);
         setTime((time: time): time => ({time: time.time + delta, delta: delta}));
@@ -139,11 +139,7 @@ const Game: () => JSX.Element = (): JSX.Element => {
                 <div className="options">
                   <b>Options:</b>
                   <br />
-                  {game.options?.map(
-                    (val: types.setting): JSX.Element => (
-                      <Setting {...val} />
-                    ),
-                  )}
+                  {game.options?.map((val: types.setting): JSX.Element => <Setting {...val} />)}
                 </div>
               </>
             )}

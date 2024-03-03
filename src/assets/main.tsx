@@ -103,7 +103,7 @@ const e: types.e = {
     setScoreboard: (_scoreboard: types.scoreboard): void => {},
     end: (_end: types.end): void => {},
     sfx: (sfx: string): HTMLAudioElement => {
-      let audio = new Audio("./assets/sounds/" + sfx + ".mp3");
+      const audio = new Audio("./assets/sounds/" + sfx + ".mp3");
       audio.volume = Number(e.storage.get("sfx-volume") || 0.5) / 100;
       audio.play();
       return audio;
@@ -118,7 +118,7 @@ const e: types.e = {
   pages: {
     get: (): string => window.location.hash.split("#")[1] || "",
     reload: (): void => {
-      let page: string = e.pages.get();
+      const page: string = e.pages.get();
       setTimeout((): void => e.pages.set(page), 1);
       e.pages.set("home", false);
     },

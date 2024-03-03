@@ -7,7 +7,7 @@ interface coordinate {
 }
 
 const apple: () => void = (): void => {
-  let random: coordinate = {x: Math.floor(Math.random() * 49), y: Math.floor(Math.random() * 49)};
+  const random: coordinate = {x: Math.floor(Math.random() * 49), y: Math.floor(Math.random() * 49)};
   let clear: boolean = true;
 
   e.games.current.data.snake.forEach((snake: {x: number; y: number}): void => {

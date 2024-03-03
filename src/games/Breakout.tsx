@@ -9,10 +9,10 @@ const cubicEase: (currentProgress: number, start: number, distance: number, step
 };
 
 const makeLevel: (level: string[]) => void = (level: string[]): void => {
-  for (let i in level) {
-    let row: string = level[i];
+  for (const i in level) {
+    const row: string = level[i];
     for (let j: number = 0; j < row.length; j++) {
-      let tile: number = Number(row.charAt(j));
+      const tile: number = Number(row.charAt(j));
       if (tile !== 0) {
         e.games.current.data.bricks.push({
           x: ballSize * 2 * j,
@@ -419,7 +419,7 @@ const Breakout: types.game = {
       ctx.fillStyle = e.storage.get("dark-mode") ? "white" : "black";
 
       if (e.storage.get("visual-effects")) {
-        let oldAlpha: number = ctx.globalAlpha;
+        const oldAlpha: number = ctx.globalAlpha;
         data.particles.forEach((particle: Particle): void => {
           ctx.globalAlpha = particle.alpha;
           ctx.fillRect(particle.x, particle.y, particle.width, particle.height);
@@ -559,7 +559,7 @@ const Breakout: types.game = {
         updateParticles(e.games.current.data.particles, ball);
 
         if (Math.sqrt(ball.dx ** 2 + ball.dy ** 2) >= 3.5 * 3) {
-          let divfactor: number = Math.sqrt(ball.dx ** 2 + ball.dy ** 2) / 15.625;
+          const divfactor: number = Math.sqrt(ball.dx ** 2 + ball.dy ** 2) / 15.625;
           for (let i: number = 0; i < divfactor; i += 0.25) {
             let tempYPos: number = ball.y - (ball.dy * i) / divfactor;
             if (tempYPos < -15.625) {
@@ -578,19 +578,19 @@ const Breakout: types.game = {
         }
       }
 
-      let oldLastHit: number = ball.lastHit;
+      const oldLastHit: number = ball.lastHit;
       ball.lastHit = -1;
 
       const bricks: Brick[] = data.bricks;
-      for (let brick of bricks) {
+      for (const brick of bricks) {
         let xPart: number = ball.x - ball.dx + ball.width / 2 - brick.x - brick.width / 2;
         let yPart: number = ball.y - ball.dy + ball.height / 2 - brick.y - brick.height / 2;
 
-        let length: number = Math.sqrt(xPart ** 2 + yPart ** 2);
+        const length: number = Math.sqrt(xPart ** 2 + yPart ** 2);
         xPart /= length;
         yPart /= length;
 
-        let angle: number = (Math.acos(yPart) / Math.PI) * 180;
+        const angle: number = (Math.acos(yPart) / Math.PI) * 180;
 
         if (ball.x + 16 > brick.x && ball.x < brick.x + brick.width && ball.y + 16 > brick.y && ball.y < brick.y + brick.height) {
           e.games.sfx("pong/hit");

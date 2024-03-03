@@ -93,7 +93,7 @@ const Pong: types.game = {
       ctx.fillStyle = e.storage.get("dark-mode") ? "white" : "black";
 
       if (e.storage.get("visual-effects")) {
-        let oldAlpha: number = ctx.globalAlpha;
+        const oldAlpha: number = ctx.globalAlpha;
         data.particles.forEach((particle: Particle): void => {
           if (!ctx) return;
 
@@ -252,7 +252,7 @@ const Pong: types.game = {
         updateParticles(data.particles, ball);
 
         if (Math.sqrt(ball.dx ** 2 + ball.dy ** 2) >= 3.5 * 3) {
-          let divfactor: number = Math.sqrt(ball.dx ** 2 + ball.dy ** 2) / 15.625;
+          const divfactor: number = Math.sqrt(ball.dx ** 2 + ball.dy ** 2) / 15.625;
           for (let i: number = 0; i < divfactor; i += 0.25) {
             let tempYPos: number = ball.y - (ball.dy * i) / divfactor;
             if (tempYPos < -15.625) {

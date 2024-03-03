@@ -10,7 +10,7 @@ interface props extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
 }
 
 const Card: (props: props) => JSX.Element = (props: props): JSX.Element => {
-  const [open, setOpen] = useState<Boolean>(props.default === undefined ? true : props.default);
+  const [open, setOpen] = useState<boolean>(props.default === undefined ? true : props.default);
 
   return (
     <div {...props} title="" onClick={(): void => {}} className={"card " + props.className}>

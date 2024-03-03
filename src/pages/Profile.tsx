@@ -6,7 +6,7 @@ import {DataSnapshot, getDatabase, limitToFirst, limitToLast, onValue, query, re
 import {update} from "firebase/database";
 import React, {useEffect, useState} from "react";
 
-let cache: {[id: string]: types.leaderboard[]} = {};
+const cache: {[id: string]: types.leaderboard[]} = {};
 
 const Profile: () => JSX.Element = (): JSX.Element => {
   const [currentStat, setCurrentStat] = useState<types.stat>(e.stats.data[0]);
@@ -22,7 +22,7 @@ const Profile: () => JSX.Element = (): JSX.Element => {
     });
 
     onValue(query(ref(getDatabase(), "Users"), orderByChild("stats/" + statIndex + "/val"), startAfter(0), (statIndex !== 13 ? limitToLast : limitToFirst)(10)), (data: DataSnapshot): void => {
-      let temp: types.leaderboard[] = [];
+      const temp: types.leaderboard[] = [];
       data.forEach((user: DataSnapshot): void => {
         if (user.val().id === e.storage.get("user-id") && user.val().id) temp.push({id: user.val().id, name: "You", stat: user.val().stats[statIndex]?.val});
         else temp.push({id: user.val().id, name: user.val().name, stat: user.val().stats[statIndex]?.val});
@@ -139,25 +139,25 @@ const Profile: () => JSX.Element = (): JSX.Element => {
         </div>
         {leaderboard.length > 0
           ? leaderboard.map((user: types.leaderboard): JSX.Element => {
-              let trueIndex: number = leaderboard
-                .filter((v: types.leaderboard): boolean => v.stat !== 0)
-                .map((v: types.leaderboard): number => v.stat)
-                .indexOf(user.stat);
+            const trueIndex: number = leaderboard
+              .filter((v: types.leaderboard): boolean => v.stat !== 0)
+              .map((v: types.leaderboard): number => v.stat)
+              .indexOf(user.stat);
 
-              return (
-                <>
-                  {user.stat > 0 ? (
-                    <div className="stat">
-                      <p>
-                        {trueIndex === 0 ? "🏆" : trueIndex === 1 ? "🥈" : trueIndex === 2 ? "🥉" : trueIndex + 1 + "th"}:{user.name?.length > 25 ? user.name?.substring(0, 25) + "..." : user.name}
-                      </p>
-                      <div></div>
-                      <p>{user.stat}</p>
-                    </div>
-                  ) : null}
-                </>
-              );
-            })
+            return (
+              <>
+                {user.stat > 0 ? (
+                  <div className="stat">
+                    <p>
+                      {trueIndex === 0 ? "🏆" : trueIndex === 1 ? "🥈" : trueIndex === 2 ? "🥉" : trueIndex + 1 + "th"}:{user.name?.length > 25 ? user.name?.substring(0, 25) + "..." : user.name}
+                    </p>
+                    <div></div>
+                    <p>{user.stat}</p>
+                  </div>
+                ) : null}
+              </>
+            );
+          })
           : "Loading..."}
       </Card>
       <Info />

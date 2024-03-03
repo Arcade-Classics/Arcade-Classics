@@ -2,7 +2,7 @@ const Info: () => JSX.Element = (): JSX.Element => {
   return (
     <div className="info">
       <a href="https://arcade-classics.github.io/changelog" target="_blank" rel="noreferrer">
-        Version 2.1.5
+        Version {chrome.runtime.getManifest().version}
       </a>
       <br />
       <a href="mailto:thearcadeclassics@gmail.com?subject=Arcade Classics Support Request" target="_blank" rel="noreferrer">

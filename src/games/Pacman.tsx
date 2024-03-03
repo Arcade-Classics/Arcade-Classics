@@ -400,7 +400,7 @@ const Pacman: types.game = {
       ctx.fillRect(225, 204, 25, 17);
 
       if (player.fruit) {
-        let texture: number[][] = [
+        const texture: number[][] = [
           [
             [0, 0, 0, 0, 0, 0, 2, 2],
             [0, 0, 0, 0, 0, 2, 2, 0],
@@ -476,7 +476,7 @@ const Pacman: types.game = {
         });
       }
 
-      let playerTexture: number[][] = [
+      const playerTexture: number[][] = [
         [
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -565,7 +565,7 @@ const Pacman: types.game = {
       });
 
       ghosts.data.forEach((ghost: ghost): void => {
-        let texture: number[][][] = [
+        const texture: number[][][] = [
           [
             [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
@@ -1043,7 +1043,7 @@ const Pacman: types.game = {
           else if (maps[player.map][1][ghost.y + 1][ghost.x] !== 1 && ghost.dir !== "up") ghost.dir = "down";
           else if (maps[player.map][1][ghost.y - 1][ghost.x] !== 1 && ghost.dir !== "down") ghost.dir = "up";
         } else if (Math.round(ghost.offset.x) === 0 && Math.round(ghost.offset.y) === 0 && maps[player.map][1][ghost.y][ghost.x] === 4) {
-          let turnsTemp: turn[] = [];
+          const turnsTemp: turn[] = [];
 
           if (maps[player.map][1][ghost.y - 1][ghost.x] !== 1 && ghost.dir !== "down") {
             turnsTemp.push({distance: calcDistance(ghost.target.x, ghost.target.y, ghost.x, ghost.y - 1), dir: "up"});
@@ -1067,7 +1067,7 @@ const Pacman: types.game = {
             } else ghost.dir = turnsTemp[0].dir;
           } else ghost.dir = turnsTemp[Math.floor(Math.random() * turnsTemp.length)].dir;
         } else if (Math.round(ghost.offset.x) === 0 && Math.round(ghost.offset.y) === 0 && maps[player.map][1][ghost.y][ghost.x] === 7 && (ghost.dir === "up" || ghost.dir === "down")) {
-          let turnsTemp: turn[] = [];
+          const turnsTemp: turn[] = [];
 
           if (maps[player.map][1][ghost.y - 1][ghost.x] !== 1 && ghost.dir !== "down") {
             turnsTemp.push({distance: calcDistance(ghost.target.x, ghost.target.y, ghost.x, ghost.y - 1), dir: "up"});

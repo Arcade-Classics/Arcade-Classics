@@ -132,8 +132,8 @@ const T048: types.game = {
           let completion: number = tweenTile.elapsed / tweenTile.duration;
           if (tweenTile.duration === 0) completion = 1;
           completion = completion * completion;
-          let currentX: number = tweenTile.startx * (1 - completion) + tweenTile.endx * completion;
-          let currentY: number = tweenTile.starty * (1 - completion) + tweenTile.endy * completion;
+          const currentX: number = tweenTile.startx * (1 - completion) + tweenTile.endx * completion;
+          const currentY: number = tweenTile.starty * (1 - completion) + tweenTile.endy * completion;
           if (tweenTile.elapsed >= 0) {
             roundRect(ctx, 50 + currentX * (120 - 50 / 3), 50 + currentY * (120 - 50 / 3), 90, 90, 10).fill();
             ctx.font = "40px Roboto";
@@ -145,7 +145,7 @@ const T048: types.game = {
         if (tweenTiles.every((tweenTile: tweenTile) => tweenTile.completed)) e.games.current.data.tweenTiles = [];
       }
       ctx.fillStyle = e.storage.get("dark-mode") ? "#121212" : "white";
-      let loseFadeAlpha: number = e.games.current.data.loseTimer / 0.625;
+      const loseFadeAlpha: number = e.games.current.data.loseTimer / 0.625;
       ctx.globalAlpha = loseFadeAlpha;
       ctx.fillRect(0, 0, 500, 500);
       ctx.globalAlpha = 1.0;
@@ -183,12 +183,12 @@ const T048: types.game = {
         data.loseTimer += delta / 60;
         if (data.loseTimer >= 0.625) {
           if (e.stats.get("2048-high-score") < data.score) e.stats.set("2048-high-score", data.score);
-          let highest: number = Math.max(...grid.flat());
+          const highest: number = Math.max(...grid.flat());
           if (e.stats.get("2048-high-tile") < highest) e.stats.set("2048-high-tile", highest);
           e.games.end({message: "Game Over", score: {Score: data.score, "Highest Tile": highest}});
         }
       }
-      let highest: number = Math.max(...grid.flat());
+      const highest: number = Math.max(...grid.flat());
       if (highest >= 512) e.achievements.set("2048-512");
       else if (highest >= 1024) e.achievements.set("2048-1024");
       else if (highest >= 2048) e.achievements.set("2048-2048");
@@ -205,7 +205,7 @@ const T048: types.game = {
                 for (let k = j - 1; k >= -1; k--) {
                   if (k === -1) {
                     if (0 !== j) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -223,7 +223,7 @@ const T048: types.game = {
                   } else if (grid[k][i] === grid[j][i]) {
                     if (k !== j) hasMoved = true;
                     hasPushed = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
                       startx: i,
@@ -251,7 +251,7 @@ const T048: types.game = {
                   } else if (grid[k][i] !== 0) {
                     if (k + 1 !== j) hasMoved = true;
                     hasPushed = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
                       startx: i,
@@ -283,7 +283,7 @@ const T048: types.game = {
             }
           }
           if (hasMoved) {
-            let possSpots: number[][] = [];
+            const possSpots: number[][] = [];
             for (let i = 0; i <= 3; i++) {
               for (let j = 0; j <= 3; j++) {
                 if (grid[j][i] === 0) {
@@ -292,15 +292,15 @@ const T048: types.game = {
               }
             }
             if (possSpots.length > 0) {
-              let spot = possSpots[Math.floor(Math.random() * possSpots.length)];
+              const spot = possSpots[Math.floor(Math.random() * possSpots.length)];
               e.games.current.data.grid[spot[0]][spot[1]] = Math.random() > 0.9 ? 4 : 2;
             }
           }
         }
         data.keys.Up = true;
       } else data.keys.Up = false;
-      for (let row of grid) {
-        for (let tile in row) {
+      for (const row of grid) {
+        for (const tile in row) {
           if (row[tile] % 3 === 0) row[tile] /= 3;
         }
       }
@@ -315,7 +315,7 @@ const T048: types.game = {
                 for (let k: number = j + 1; k <= 4; k++) {
                   if (k === 4) {
                     if (3 !== j) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -332,7 +332,7 @@ const T048: types.game = {
                     break;
                   } else if (grid[k][i] === grid[j][i]) {
                     if (k !== j) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -360,7 +360,7 @@ const T048: types.game = {
                     break;
                   } else if (grid[k][i] !== 0) {
                     if (k - 1 !== j) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -393,22 +393,22 @@ const T048: types.game = {
             }
           }
           if (hasMoved) {
-            let possSpots = [];
+            const possSpots = [];
             for (let i: number = 0; i <= 3; i++) {
               for (let j: number = 0; j <= 3; j++) {
                 if (grid[j][i] === 0) possSpots.push([j, i]);
               }
             }
             if (possSpots.length > 0) {
-              let spot: number[] = possSpots[Math.floor(Math.random() * possSpots.length)];
+              const spot: number[] = possSpots[Math.floor(Math.random() * possSpots.length)];
               e.games.current.data.grid[spot[0]][spot[1]] = Math.random() > 0.9 ? 4 : 2;
             }
           }
         }
         data.keys.Down = true;
       } else data.keys.Down = false;
-      for (let row of grid) {
-        for (let tile in row) {
+      for (const row of grid) {
+        for (const tile in row) {
           if (row[tile] % 3 === 0) row[tile] /= 3;
         }
       }
@@ -423,7 +423,7 @@ const T048: types.game = {
                 for (let k: number = i - 1; k >= -1; k--) {
                   if (k === -1) {
                     if (0 !== i) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -440,7 +440,7 @@ const T048: types.game = {
                     break;
                   } else if (grid[j][k] === grid[j][i]) {
                     if (k !== i) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -468,7 +468,7 @@ const T048: types.game = {
                     break;
                   } else if (grid[j][k] !== 0) {
                     if (k + 1 !== i) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -501,22 +501,22 @@ const T048: types.game = {
             }
           }
           if (hasMoved) {
-            let possSpots: number[][] = [];
+            const possSpots: number[][] = [];
             for (let i: number = 0; i <= 3; i++) {
               for (let j: number = 0; j <= 3; j++) {
                 if (grid[j][i] === 0) possSpots.push([j, i]);
               }
             }
             if (possSpots.length > 0) {
-              let spot: number[] = possSpots[Math.floor(Math.random() * possSpots.length)];
+              const spot: number[] = possSpots[Math.floor(Math.random() * possSpots.length)];
               e.games.current.data.grid[spot[0]][spot[1]] = Math.random() > 0.9 ? 4 : 2;
             }
           }
         }
         data.keys.Left = true;
       } else data.keys.Left = false;
-      for (let row of grid) {
-        for (let tile in row) {
+      for (const row of grid) {
+        for (const tile in row) {
           if (row[tile] % 3 === 0) row[tile] /= 3;
         }
       }
@@ -531,7 +531,7 @@ const T048: types.game = {
                 for (let k: number = i + 1; k <= 4; k++) {
                   if (k === 4) {
                     if (3 !== i) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -548,7 +548,7 @@ const T048: types.game = {
                     break;
                   } else if (grid[j][k] === grid[j][i]) {
                     if (k !== i) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -576,7 +576,7 @@ const T048: types.game = {
                     break;
                   } else if (grid[j][k] !== 0) {
                     if (k - 1 !== i) hasMoved = true;
-                    let tempTile: number = grid[j][i];
+                    const tempTile: number = grid[j][i];
                     hasPushed = true;
                     e.games.current.data.tweenTiles.push({
                       value: tempTile,
@@ -609,22 +609,22 @@ const T048: types.game = {
             }
           }
           if (hasMoved) {
-            let possSpots: number[][] = [];
+            const possSpots: number[][] = [];
             for (let i: number = 0; i <= 3; i++) {
               for (let j: number = 0; j <= 3; j++) {
                 if (grid[j][i] === 0) possSpots.push([j, i]);
               }
             }
             if (possSpots.length > 0) {
-              let spot: number[] = possSpots[Math.floor(Math.random() * possSpots.length)];
+              const spot: number[] = possSpots[Math.floor(Math.random() * possSpots.length)];
               e.games.current.data.grid[spot[0]][spot[1]] = Math.random() > 0.9 ? 4 : 2;
             }
           }
         }
         data.keys.Right = true;
       } else data.keys.Right = false;
-      for (let row of grid) {
-        for (let tile in row) {
+      for (const row of grid) {
+        for (const tile in row) {
           if (row[tile] % 3 === 0) row[tile] /= 3;
         }
       }

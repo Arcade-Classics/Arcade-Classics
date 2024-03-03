@@ -3,7 +3,6 @@ import * as types from "../assets/types";
 import Card from "../components/Card";
 import Info from "../components/Info";
 import Setting from "../components/Setting";
-import {getAuth} from "@firebase/auth";
 import {useState} from "react";
 
 const Settings: () => JSX.Element = (): JSX.Element => {

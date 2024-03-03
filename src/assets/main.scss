@@ -15,7 +15,9 @@
 }
 body {
   font-family: "Roboto", sans-serif;
-  transition: width 0.5s, height 0.5s;
+  transition:
+    width 0.5s,
+    height 0.5s;
   color: var(--text);
   width: 250px;
   height: 450px;
@@ -308,7 +310,9 @@ body {
   text-align: center;
   border-radius: 5px;
   color: var(--primary);
-  transition: color 0.5s, background-color 0.5s;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
   &:hover,
   &.active {
     cursor: pointer;

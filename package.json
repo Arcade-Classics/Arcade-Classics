@@ -1,55 +1,31 @@
 {
   "name": "arcade-classics",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.15.8",
-    "@craco/craco": "^5.9.0",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.3.0",
-    "@trivago/prettier-plugin-sort-imports": "^3.0.0",
-    "@types/chrome": "^0.0.159",
-    "@types/firebase": "^3.2.1",
-    "@types/node": "^16.11.0",
-    "@types/react": "^17.0.30",
-    "@types/react-dom": "^17.0.9",
-    "eslint-config-react-app": "^6.0.0",
-    "firebase": "^9.8.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^5.0.1",
-    "typescript": "^4.4.4"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.262",
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "firebase": "^10.8.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.4"
   },
   "scripts": {
-    "prettier": "npx prettier --write .",
-    "build-css": "sass --charset --no-source-map --style=compressed ./src/assets/main.scss ./src/assets/main.css",
-    "build-chromium": "npm run prettier && npm run build-css && react-scripts build && mv ./build/manifest-chromium.json ./build/manifest.json",
-    "build-firefox": "npm run prettier && npm run build-css && react-scripts build && mv ./build/manifest-firefox.json ./build/manifest.json"
-  },
-  "watch": {
-    "build": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "js,ts,tsx"
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "build-dev": "./build.sh dev",
+    "build-chromium": "./build.sh chromium",
+    "build-firefox": "./build.sh firefox",
+    "build-release": "./build.sh release",
+    "build": "./build.sh release"
   }
 }

@@ -46,11 +46,7 @@ const Setting: (props: types.setting) => JSX.Element = (props: types.setting): J
               e.storage.set(props.id, event.currentTarget.value);
               if (props.function) props.function(event.currentTarget.value);
             }}>
-            {props.options?.map(
-              (option: {name: string; id: string | number}): JSX.Element => (
-                <option value={option.id}>{option.name}</option>
-              ),
-            )}
+            {props.options?.map((option: {name: string; id: string | number}): JSX.Element => <option value={option.id}>{option.name}</option>)}
           </select>
         </div>
       );
@@ -91,7 +87,7 @@ const Setting: (props: types.setting) => JSX.Element = (props: types.setting): J
           <div
             className="button"
             onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
-              let element: HTMLDivElement = event.target as HTMLDivElement;
+              const element: HTMLDivElement = event.target as HTMLDivElement;
               element.innerText = "Recording";
               window.addEventListener(
                 "keydown",
