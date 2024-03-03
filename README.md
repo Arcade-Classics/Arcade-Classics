@@ -4,17 +4,35 @@ The source code of the Arcade Classics chrome extension
 
 ## Info
 
-This extension is written in React Tpescript and uses a Firebase Realtime Database to manage leaderboards. Please make sure you are familiar with these technologies before contributing.
+This extension is written in React Tpescript and uses a Firebase Realtime Database to manage leaderboards.
 
-The code here is missing comments and a few other nice to haves for contributors, we are working on adding these soon.
+## Install
+
+Go to [Arcade Classics](https://arcade-classics.github.io/install), to be automatically taken to the install page for your browser.
+
+Direct Links:
+- [Chromium](https://chromewebstore.google.com/detail/arcade-classics/gokcmhknbfbkchaljcbjloaebnoblcnd)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/arcade-classics/)
+
 
 ## Building
 
-1. Download and uncompress the source code.
-2. Check you have Node JS 16 or greater.
-3. Run `npm i` in the source directory.
-4. If you are on Windows go to the `package.json` file and on lines 26 and 27 change `mv` to `move`.
-5. When building for Frefox run `npm run build-firefox`.
-6. When building for a chromium based browser (eg: chrome, edge) run `npm run build-chromium`.
-7. The built code can be found in `/build`.
-8. Load the build into your browser of choice.
+### Requirements
+- A UNIX system (Linux or Max)
+- Node JS 20 or newer
+- NPM 10 or newer
+
+Install dependencies with `npm i` before building.
+
+### Building for Development
+Use `npm run build-dev` or `./build.sh dev <VERSION>` to quickly create a Chromium version. The built extension can be loaded from `/dist`.
+
+### Building for a specific Platform
+#### Chromium
+Use `npm run build-chromium` or `./build.sh chromium <VERSION>` to create a build for Chromium browsers. The built extension can be loaded from `/dist`.
+
+#### Firefox
+Use `npm run build-firefox` or `./build.sh firefox <VERSION>` to create a build for Firefox. The built extension can be loaded from `/dist`.
+
+### Creating Release Files
+Use `npm run build` or `./build.sh release` to create final build files. Zipped files can be found in `/build`.
